@@ -13,6 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+/*
+ * tasks
+ */
+Route::middleware('api')->post('/tasklist','TaskController@getTasks');
+Route::middleware('api')->post('/ctask','TaskController@addTasks');
+Route::middleware('api')->post('/deltask','TaskController@delTasks');
+
+/**
+ * suggestions
+ */
+Route::middleware('api')->post('/send','SuggestionController@sendEmail');
