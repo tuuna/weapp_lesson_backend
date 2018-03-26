@@ -30,3 +30,8 @@ Route::middleware('api')->post('/deltask','TaskController@delTasks');
  * suggestions
  */
 Route::middleware('api')->post('/send','SuggestionController@sendEmail');
+
+/**
+ * register
+ */
+Route::middleware('api')->post('/onLogin','TokenController@getToken');

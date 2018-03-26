@@ -110,6 +110,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | custom Configuration
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+    'weixin' => [
+        'app_id' => 'wx8068239628befb5b',
+        'app_secret' => 'a1fdd2500a83113797d2b1e717e14aa0',
+        'login_url' => "https://api.weixin.qq.com/sns/jscode2session?".
+            "appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
+    ],
+    /*
+    |--------------------------------------------------------------------------
     | Logging Configuration
     |--------------------------------------------------------------------------
     |
@@ -177,6 +190,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Ixudra\Curl\CurlServiceProvider::class,
+
 
     ],
 
@@ -226,7 +241,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Curl'          => Ixudra\Curl\Facades\Curl::class,
     ],
 
 ];
