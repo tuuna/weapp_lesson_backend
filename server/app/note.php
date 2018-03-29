@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tasks extends Model
+class note extends Model
 {
+    protected $table = "notes";
     protected $fillable = [
-        'content','openid','txtStyle'
+        "openid","img","date"
     ];
 }

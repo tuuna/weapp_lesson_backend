@@ -13,10 +13,10 @@ class students extends Model
 
     public function has_reg($openid)
     {
-        $student = $this->where('openid',$openid)->get();
+        $student = $this->where('openid',$openid)->first();
         if($student->count()) {
             if(!empty($student->departid)) {
-                return response()->json(['msg' => '已注册','code' => '200']);
+                return response()->json(['msg' => '已注册','code' => '200','token' => base64_encode($openid)]);
             } else {
                 return response()->json(['msg' => '未绑定信息','code' => '400','token' => base64_encode($openid)]);
             }

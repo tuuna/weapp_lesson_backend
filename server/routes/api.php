@@ -35,3 +35,26 @@ Route::middleware('api')->post('/send','SuggestionController@sendEmail');
  * register
  */
 Route::middleware('api')->post('/onLogin','TokenController@getToken');
+Route::middleware('api')->post('/reg','TokenController@reg');
+
+/**
+ * depart
+ */
+Route::middleware('api')->get('/getProject','ProjectController@getList');
+
+/**
+ * Homework
+ */
+Route::middleware('api')->post('/getWork','HomeworkController@getWorkList');
+
+/**
+ * Timetable
+ */
+Route::middleware('api')->post('/getTimetable','TimetableController@index');
+
+/**
+ * note
+ */
+Route::middleware('api')->post('/upload','NoteController@upload');
+Route::middleware('api')->post('/getNote','NoteController@getList');
+

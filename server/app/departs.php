@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tasks extends Model
+class departs extends Model
 {
+    protected $table = 'departs';
     protected $fillable = [
-        'content','openid','txtStyle'
+        'project'
     ];
 }

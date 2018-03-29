@@ -15,7 +15,8 @@ class TaskController extends Controller
 
     public function getTasks(Request $request)
     {
-        $id = $request->get('openid');
+        $id = $request->get('token');
+        $id = base64_decode($id);
         if($task = $this->task->getTasks($id)) {
             return response()->json(['status' => 200,'data' => $task]);
         } else {

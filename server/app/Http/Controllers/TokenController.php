@@ -36,4 +36,20 @@ class TokenController extends Controller
         $model = new students;
         return $model->has_reg($result['openid']);
     }
+
+    public function reg(Request $request)
+    {
+        $data = $request->all();
+        $model = new students();
+        $result = $model->where('openid',base64_decode($data['token']))->update([
+            'name' => $data['name'],
+            'sid' => $data['sid'],
+            'departid' => $data['departid'] + 1
+        ]);
+        if($result) {
+            return response()->json(['msg' => '提交成功','code' => '200']);
+        } else {
+            return response()->json(['msg' => '提交失败','code' => '400']);
+        }
+    }
 }

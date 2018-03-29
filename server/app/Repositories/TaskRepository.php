@@ -36,7 +36,7 @@
  */
 namespace App\Repositories;
 
-use App\tasks as Task;
+use App\tasks;
 use Illuminate\Support\Facades\DB;
 
 class TaskRepository
@@ -46,7 +46,8 @@ class TaskRepository
      */
     public function getTasks($openid)
     {
-        return DB::table('tasks')->where('openid', $openid)->get();
+         $results = tasks::select(['id','content','txtStyle'])->where('openid', $openid)->get();
+         return $results;
     }
 
     /*
@@ -54,10 +55,9 @@ class TaskRepository
      */
     public function addTasks($data)
     {
-        return Task::create([
+        return tasks::create([
             'content' => $data['content'],
-            'stuid' => $data['stuid'] != null ? $data['stuid'] : null,
-            'openid' => $data['openid']
+            'openid' => base64_decode($data['token']),
         ]);
     }
 
@@ -66,7 +66,7 @@ class TaskRepository
      */
     public function delTasks($id)
     {
-        return Task::where('id',$id)->delete();
+        return tasks::where('id',$id)->delete();
     }
 
 }
