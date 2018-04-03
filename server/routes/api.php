@@ -57,4 +57,5 @@ Route::middleware('api')->post('/getTimetable','TimetableController@index');
  */
 Route::middleware('api')->post('/upload','NoteController@upload');
 Route::middleware('api')->post('/getNote','NoteController@getList');
+Route::middleware('api')->get('/sign/{token}/{openid}','SignController@signin');
 

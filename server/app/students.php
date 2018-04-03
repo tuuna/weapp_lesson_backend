@@ -13,12 +13,12 @@ class students extends Model
 
     public function has_reg($openid)
     {
-        $student = $this->where('openid',$openid)->first();
-        if($student->count()) {
-            if(!empty($student->departid)) {
+        $student = $this->where('openid',$openid)->get();
+        if($student->first()) {
+            if(!empty($student->first()->departid)) {
                 return response()->json(['msg' => '已注册','code' => '200','token' => base64_encode($openid)]);
             } else {
-                return response()->json(['msg' => '未绑定信息','code' => '400','token' => base64_encode($openid)]);
+                return response()->json(['msg' => '未绑定真实信息','code' => '400','token' => base64_encode($openid)]);
             }
         } else {
             $this->createToken($openid);
